@@ -1,0 +1,340 @@
+openapi: 3.0.3
+info:
+  title: Fleet Maintenance API
+  version: 1.0.0
+  description: |
+    Multi-tenant API for fleet maintenance operations.
+    All requests require X-Tenant header. Protected endpoints also require Bearer token.
+servers:
+  - url: http://localhost:8000/api/v1
+security:
+  - bearerAuth: []
+tags:
+  - name: Auth
+  - name: Equipment
+  - name: Maintenances
+paths:
+  /auth/login:
+    post:
+      tags: [Auth]
+      security: []
+      summary: Login and issue Sanctum token
+      parameters:
+        - $ref: '#/components/parameters/TenantHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                device_name:
+                  type: string
+      responses:
+        '200':
+          description: Authenticated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token_type:
+                    type: string
+                    example: Bearer
+                  access_token:
+                    type: string
+                  abilities:
+                    type: array
+                    items:
+                      type: string
+  /auth/me:
+    get:
+      tags: [Auth]
+      summary: Current authenticated user profile
+      parameters:
+        - $ref: '#/components/parameters/TenantHeader'
+      responses:
+        '200':
+          description: Current user
+  /auth/logout:
+    post:
+      tags: [Auth]
+      summary: Revoke current access token
+      parameters:
+        - $ref: '#/components/parameters/TenantHeader'
+      responses:
+        '200':
+          description: Logged out
+
+  /equipment:
+    get:
+      tags: [Equipment]
+      summary: List equipment
+      parameters:
+        - $ref: '#/components/parameters/TenantHeader'
+        - in: query
+          name: per_page
+          schema:
+            type: integer
+            default: 15
+      responses:
+        '200':
+          description: Paginated equipment list
+    post:
+      tags: [Equipment]
+      summary: Create equipment
+      parameters:
+        - $ref: '#/components/parameters/TenantHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EquipmentWrite'
+      responses:
+        '201':
+          description: Created
+
+  /equipment/{id}:
+    get:
+      tags: [Equipment]
+      summary: Get equipment by ID
+      parameters:
+        - $ref: '#/components/parameters/TenantHeader'
+        - $ref: '#/components/parameters/IdPath'
+      responses:
+        '200':
+          description: Equipment record
+    put:
+      tags: [Equipment]
+      summary: Update equipment
+      parameters:
+        - $ref: '#/components/parameters/TenantHeader'
+        - $ref: '#/components/parameters/IdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EquipmentWrite'
+      responses:
+        '200':
+          description: Updated
+    patch:
+      tags: [Equipment]
+      summary: Partial update equipment
+      parameters:
+        - $ref: '#/components/parameters/TenantHeader'
+        - $ref: '#/components/parameters/IdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EquipmentWrite'
+      responses:
+        '200':
+          description: Updated
+    delete:
+      tags: [Equipment]
+      summary: Delete equipment
+      parameters:
+        - $ref: '#/components/parameters/TenantHeader'
+        - $ref: '#/components/parameters/IdPath'
+      responses:
+        '204':
+          description: Deleted
+
+  /equipment/{id}/maintenances:
+    get:
+      tags: [Maintenances]
+      summary: List maintenance history by equipment
+      parameters:
+        - $ref: '#/components/parameters/TenantHeader'
+        - $ref: '#/components/parameters/IdPath'
+        - in: query
+          name: per_page
+          schema:
+            type: integer
+            default: 15
+      responses:
+        '200':
+          description: Paginated maintenance list
+
+  /maintenances:
+    get:
+      tags: [Maintenances]
+      summary: List maintenances with filters
+      parameters:
+        - $ref: '#/components/parameters/TenantHeader'
+        - in: query
+          name: type
+          schema:
+            type: string
+            enum: [preventive, corrective]
+        - in: query
+          name: status
+          schema:
+            type: string
+            enum: [pending, in_progress, completed, cancelled]
+        - in: query
+          name: equipment_id
+          schema:
+            type: integer
+        - in: query
+          name: upcoming
+          schema:
+            type: boolean
+        - in: query
+          name: recent
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Paginated maintenance list
+    post:
+      tags: [Maintenances]
+      summary: Create maintenance
+      parameters:
+        - $ref: '#/components/parameters/TenantHeader'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MaintenanceWrite'
+      responses:
+        '201':
+          description: Created
+
+  /maintenances/{id}:
+    get:
+      tags: [Maintenances]
+      summary: Get maintenance by ID
+      parameters:
+        - $ref: '#/components/parameters/TenantHeader'
+        - $ref: '#/components/parameters/IdPath'
+      responses:
+        '200':
+          description: Maintenance record
+    put:
+      tags: [Maintenances]
+      summary: Update maintenance
+      parameters:
+        - $ref: '#/components/parameters/TenantHeader'
+        - $ref: '#/components/parameters/IdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MaintenanceWrite'
+      responses:
+        '200':
+          description: Updated
+    patch:
+      tags: [Maintenances]
+      summary: Partial update maintenance
+      parameters:
+        - $ref: '#/components/parameters/TenantHeader'
+        - $ref: '#/components/parameters/IdPath'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MaintenanceWrite'
+      responses:
+        '200':
+          description: Updated
+    delete:
+      tags: [Maintenances]
+      summary: Delete maintenance
+      parameters:
+        - $ref: '#/components/parameters/TenantHeader'
+        - $ref: '#/components/parameters/IdPath'
+      responses:
+        '204':
+          description: Deleted
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Token
+  parameters:
+    TenantHeader:
+      name: X-Tenant
+      in: header
+      required: true
+      schema:
+        type: string
+      description: Tenant slug or tenant ID
+    IdPath:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+  schemas:
+    EquipmentWrite:
+      type: object
+      required: [type, unit_number, status]
+      properties:
+        type:
+          type: string
+          enum: [truck, trailer]
+        unit_number:
+          type: string
+          maxLength: 50
+        brand:
+          type: string
+          nullable: true
+        model:
+          type: string
+          nullable: true
+        status:
+          type: string
+          enum: [active, maintenance, out_of_service]
+    MaintenanceWrite:
+      type: object
+      required: [equipment_id, date, type, odometer_hours, description, cost]
+      properties:
+        equipment_id:
+          type: integer
+        date:
+          type: string
+          format: date
+        type:
+          type: string
+          enum: [preventive, corrective]
+        status:
+          type: string
+          enum: [pending, in_progress, completed, cancelled]
+        odometer_hours:
+          type: integer
+          minimum: 0
+        description:
+          type: string
+        cost:
+          type: number
+          format: float
+          minimum: 0
+        performed_by:
+          type: string
+          nullable: true
+        next_maintenance_date:
+          type: string
+          format: date
+          nullable: true
+        next_maintenance_odometer:
+          type: integer
+          minimum: 0
+          nullable: true
