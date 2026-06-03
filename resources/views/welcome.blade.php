@@ -52,7 +52,7 @@
             </div>
             <div class="flex flex-wrap gap-2">
                 <a href="/api/v1/auth/login" class="rounded-xl border border-ink/15 bg-white px-4 py-2 text-sm font-semibold transition hover:-translate-y-0.5">API v1</a>
-                <a href="/admin" class="rounded-xl bg-ink px-4 py-2 text-sm font-semibold text-white transition hover:-translate-y-0.5">Entrar al panel</a>
+                <a href="/app" class="rounded-xl bg-ink px-4 py-2 text-sm font-semibold text-white transition hover:-translate-y-0.5">Entrar al panel</a>
             </div>
         </div>
     </header>
@@ -64,8 +64,8 @@
                 <h1 class="mt-3 font-display text-4xl font-black leading-[0.95] md:text-6xl">Controla tu flota, reduce costos y evita paradas inesperadas.</h1>
                 <p class="mt-4 max-w-2xl text-base text-ink/75 md:text-lg">Una plataforma para empresas de transporte que necesitan trazabilidad tecnica real: mantenimientos preventivos, correctivos, historial por unidad y reportes para decidir con datos.</p>
                 <div class="mt-7 flex flex-wrap gap-3">
-                    <a href="/admin" class="rounded-xl bg-amberx px-5 py-3 text-sm font-bold text-white shadow-lg shadow-amberx/25 transition hover:-translate-y-0.5">Agendar demo</a>
-                    <a href="/admin/equipment" class="rounded-xl border border-ink/20 bg-white px-5 py-3 text-sm font-bold transition hover:-translate-y-0.5">Explorar plataforma</a>
+                    <a href="/app" class="rounded-xl bg-amberx px-5 py-3 text-sm font-bold text-white shadow-lg shadow-amberx/25 transition hover:-translate-y-0.5">Agendar demo</a>
+                    <a href="/app/equipment" class="rounded-xl border border-ink/20 bg-white px-5 py-3 text-sm font-bold transition hover:-translate-y-0.5">Explorar plataforma</a>
                 </div>
             </div>
             <aside class="animate-rise rounded-2xl bg-ink p-5 text-white" style="animation-delay:180ms;">
@@ -144,8 +144,8 @@
             <h2 class="font-display text-3xl font-black">Solicita una demo</h2>
             <p class="mt-3 max-w-2xl text-white/80">Transforma tu mantenimiento en un sistema predictivo y ordenado. Ve la plataforma en accion con tus propios casos de uso.</p>
             <div class="mt-6 flex flex-wrap gap-3">
-                <a href="/admin" class="rounded-xl bg-amberx px-5 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5">Solicitar demo</a>
-                <a href="/admin/maintenances" class="rounded-xl border border-white/25 px-5 py-3 text-sm font-bold transition hover:-translate-y-0.5">Ver mantenimientos</a>
+                <a href="/app" class="rounded-xl bg-amberx px-5 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5">Solicitar demo</a>
+                <a href="/app/maintenances" class="rounded-xl border border-white/25 px-5 py-3 text-sm font-bold transition hover:-translate-y-0.5">Ver mantenimientos</a>
             </div>
         </section>
     </main>
