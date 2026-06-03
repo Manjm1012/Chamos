@@ -14,9 +14,12 @@ return new class extends Migration
         }
 
         // Remove any duplicate (category, name) rows before adding unique constraint
+        // Wrapped in subquery alias to avoid MySQL 1093 error
         DB::statement(
             'DELETE FROM maintenance_items WHERE id NOT IN (
-                SELECT MIN(id) FROM maintenance_items GROUP BY category, name
+                SELECT id FROM (
+                    SELECT MIN(id) as id FROM maintenance_items GROUP BY category, name
+                ) AS tmp
             )'
         );
 
