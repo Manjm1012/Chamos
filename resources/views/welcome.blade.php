@@ -44,31 +44,31 @@
         <div class="absolute top-1/3 -right-24 h-96 w-96 rounded-full bg-tealx/20 blur-3xl"></div>
     </div>
 
-    <header class="mx-auto mt-5 w-[min(1150px,94vw)] rounded-2xl border border-ink/10 bg-white/70 px-6 py-4 backdrop-blur">
+    <header class="mx-auto mt-5 w-[min(1150px,94vw)] rounded-2xl border border-ink/10 bg-white/70 px-4 py-3 backdrop-blur sm:px-6 sm:py-4">
         <div class="flex flex-wrap items-center justify-between gap-3">
             <div class="flex items-center gap-3">
-                <div class="grid h-10 w-10 place-items-center rounded-xl bg-ink font-display text-sm font-bold text-white">FO</div>
-                <p class="font-display text-lg font-bold">FleetOps</p>
+                <div class="grid h-9 w-9 place-items-center rounded-xl bg-ink font-display text-sm font-bold text-white sm:h-10 sm:w-10">FO</div>
+                <p class="font-display text-base font-bold sm:text-lg">FleetOps</p>
             </div>
             <div class="flex flex-wrap gap-2">
-                <a href="/api/v1/auth/login" class="rounded-xl border border-ink/15 bg-white px-4 py-2 text-sm font-semibold transition hover:-translate-y-0.5">API v1</a>
-                <a href="/app" class="rounded-xl bg-ink px-4 py-2 text-sm font-semibold text-white transition hover:-translate-y-0.5">Entrar al panel</a>
+                <a href="/api/v1/auth/login" class="rounded-xl border border-ink/15 bg-white px-3 py-2 text-xs font-semibold transition hover:-translate-y-0.5 sm:px-4 sm:text-sm">API v1</a>
+                <a href="/app" class="rounded-xl bg-ink px-3 py-2 text-xs font-semibold text-white transition hover:-translate-y-0.5 sm:px-4 sm:text-sm">Entrar al panel</a>
             </div>
         </div>
     </header>
 
-    <main class="mx-auto w-[min(1150px,94vw)] pb-20 pt-8">
-        <section class="grid gap-5 rounded-3xl border border-ink/10 bg-white/80 p-8 shadow-xl shadow-ink/5 lg:grid-cols-[1.2fr_1fr]">
+    <main class="mx-auto w-[min(1150px,94vw)] pb-20 pt-6">
+        <section class="grid gap-5 rounded-3xl border border-ink/10 bg-white/80 p-5 shadow-xl shadow-ink/5 sm:p-8 lg:grid-cols-[1.2fr_1fr]">
             <div class="animate-rise" style="animation-delay:80ms;">
                 <p class="text-xs font-bold uppercase tracking-[0.2em] text-tealx">Gestion de mantenimiento para transporte</p>
-                <h1 class="mt-3 font-display text-4xl font-black leading-[0.95] md:text-6xl">Controla tu flota, reduce costos y evita paradas inesperadas.</h1>
-                <p class="mt-4 max-w-2xl text-base text-ink/75 md:text-lg">Una plataforma para empresas de transporte que necesitan trazabilidad tecnica real: mantenimientos preventivos, correctivos, historial por unidad y reportes para decidir con datos.</p>
+                <h1 class="mt-3 font-display text-3xl font-black leading-[0.95] sm:text-4xl md:text-6xl">Controla tu flota, reduce costos y evita paradas inesperadas.</h1>
+                <p class="mt-4 max-w-2xl text-sm text-ink/75 sm:text-base md:text-lg">Una plataforma para empresas de transporte que necesitan trazabilidad tecnica real: mantenimientos preventivos, correctivos, historial por unidad y reportes para decidir con datos.</p>
                 <div class="mt-7 flex flex-wrap gap-3">
                     <a href="/app" class="rounded-xl bg-amberx px-5 py-3 text-sm font-bold text-white shadow-lg shadow-amberx/25 transition hover:-translate-y-0.5">Agendar demo</a>
                     <a href="/app/equipment" class="rounded-xl border border-ink/20 bg-white px-5 py-3 text-sm font-bold transition hover:-translate-y-0.5">Explorar plataforma</a>
                 </div>
             </div>
-            <aside class="animate-rise rounded-2xl bg-ink p-5 text-white" style="animation-delay:180ms;">
+            <aside class="animate-rise rounded-2xl bg-ink p-4 text-white sm:p-5" style="animation-delay:180ms;">
                 <h2 class="font-display text-xl font-bold">Operacion visible en tiempo real</h2>
                 <ul class="mt-4 space-y-3 text-sm text-white/85">
                     <li class="rounded-xl border border-white/15 bg-white/5 p-3">Alertas por fecha y kilometraje antes de la falla.</li>
@@ -79,19 +79,19 @@
             </aside>
         </section>
 
-        <section class="mt-8 rounded-3xl border border-ink/10 bg-white/85 p-8 animate-rise" style="animation-delay:220ms;">
+        <section class="mt-8 rounded-3xl border border-ink/10 bg-white/85 p-5 animate-rise sm:p-8" style="animation-delay:220ms;">
             <h2 class="font-display text-3xl font-black">El problema</h2>
             <p class="mt-3 max-w-3xl text-ink/75">Muchas flotas siguen operando con registros dispersos en hojas de calculo, mensajes sueltos y memoria del equipo. Eso provoca mantenimientos tardios, sobrecostos y poca visibilidad para gerencia.</p>
-            <div class="mt-5 grid gap-4 md:grid-cols-3">
+            <div class="mt-5 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
                 <div class="rounded-2xl border border-ink/10 bg-cloud p-4 text-sm font-semibold">Sin historial centralizado por vehiculo</div>
                 <div class="rounded-2xl border border-ink/10 bg-cloud p-4 text-sm font-semibold">Alertas preventivas inexistentes o tardias</div>
                 <div class="rounded-2xl border border-ink/10 bg-cloud p-4 text-sm font-semibold">Costos ocultos hasta cierre de mes</div>
             </div>
         </section>
 
-        <section class="mt-8 rounded-3xl border border-ink/10 bg-linear-to-br from-white to-cloud p-8 animate-rise" style="animation-delay:280ms;">
+        <section class="mt-8 rounded-3xl border border-ink/10 bg-gradient-to-br from-white to-cloud p-5 animate-rise sm:p-8" style="animation-delay:280ms;">
             <h2 class="font-display text-3xl font-black">Nuestra solucion</h2>
-            <div class="mt-5 grid gap-4 md:grid-cols-2">
+            <div class="mt-5 grid gap-4 sm:grid-cols-2">
                 <article class="rounded-2xl border border-ink/10 bg-white p-5">
                     <h3 class="font-display text-xl font-bold">1. Registro de equipos</h3>
                     <p class="mt-2 text-sm text-ink/75">Control total de unidades, estado operativo, kilometraje y tipo de activo.</p>
@@ -111,10 +111,10 @@
             </div>
         </section>
 
-        <section class="mt-8 rounded-3xl border border-ink/10 bg-white p-8 animate-rise" style="animation-delay:340ms;">
+        <section class="mt-8 rounded-3xl border border-ink/10 bg-white p-5 animate-rise sm:p-8" style="animation-delay:340ms;">
             <h2 class="font-display text-3xl font-black">Demo visual</h2>
             <p class="mt-3 text-ink/75">Interfaz creada con Filament para operaciones rapidas: filtros por fecha, acciones por unidad y panel de indicadores.</p>
-            <div class="mt-6 grid gap-4 md:grid-cols-3">
+            <div class="mt-6 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
                 <div class="rounded-2xl border border-ink/10 bg-cloud p-4">
                     <p class="text-xs font-bold uppercase tracking-widest text-tealx">Dashboard</p>
                     <p class="mt-2 text-sm">KPIs de equipos activos, mantenimientos proximos y costos.</p>
@@ -130,9 +130,9 @@
             </div>
         </section>
 
-        <section class="mt-8 rounded-3xl border border-ink/10 bg-white/85 p-8 animate-rise" style="animation-delay:400ms;">
+        <section class="mt-8 rounded-3xl border border-ink/10 bg-white/85 p-5 animate-rise sm:p-8" style="animation-delay:400ms;">
             <h2 class="font-display text-3xl font-black">Beneficios para tu operacion</h2>
-            <div class="mt-5 grid gap-4 md:grid-cols-4">
+            <div class="mt-5 grid gap-4 grid-cols-2 md:grid-cols-4">
                 <div class="rounded-2xl border border-ink/10 bg-white p-4 text-sm font-semibold">Menos paradas no programadas</div>
                 <div class="rounded-2xl border border-ink/10 bg-white p-4 text-sm font-semibold">Decisiones basadas en datos reales</div>
                 <div class="rounded-2xl border border-ink/10 bg-white p-4 text-sm font-semibold">Trazabilidad para auditorias</div>
@@ -140,7 +140,7 @@
             </div>
         </section>
 
-        <section class="mt-8 rounded-3xl bg-ink p-8 text-white animate-rise" style="animation-delay:460ms;">
+        <section class="mt-8 rounded-3xl bg-ink p-5 text-white animate-rise sm:p-8" style="animation-delay:460ms;">
             <h2 class="font-display text-3xl font-black">Solicita una demo</h2>
             <p class="mt-3 max-w-2xl text-white/80">Transforma tu mantenimiento en un sistema predictivo y ordenado. Ve la plataforma en accion con tus propios casos de uso.</p>
             <div class="mt-6 flex flex-wrap gap-3">
