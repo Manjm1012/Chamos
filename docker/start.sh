@@ -9,6 +9,10 @@ php artisan key:generate --no-interaction --force
 # Run migrations
 php artisan migrate --force --no-interaction
 
+# Ensure storage directories exist (important for mounted volumes)
+mkdir -p storage/app/public storage/framework/cache storage/framework/sessions storage/framework/views storage/logs
+php artisan storage:link --force 2>/dev/null || true
+
 # Seed only if tables are empty
 php artisan db:seed --force --no-interaction 2>/dev/null || true
 

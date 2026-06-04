@@ -66,4 +66,6 @@ RUN chmod +x /start.sh
 
 EXPOSE 80
 
+VOLUME ["/var/www/html/storage/app"]
+
 CMD ["/start.sh"]
