@@ -12,6 +12,9 @@ php artisan migrate --force --no-interaction
 # Seed only if tables are empty
 php artisan db:seed --force --no-interaction 2>/dev/null || true
 
+# Publish vendor assets
+php artisan livewire:publish --assets --quiet
+
 # Clear and cache config
 php artisan config:cache
 php artisan route:cache
