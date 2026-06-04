@@ -16,8 +16,8 @@ php artisan db:seed --force --no-interaction 2>/dev/null || true
 php artisan livewire:publish --assets --quiet
 
 # Clear and cache config
+php artisan optimize:clear
 php artisan config:cache
-php artisan route:cache
 php artisan view:cache
 
 # Fix storage permissions
